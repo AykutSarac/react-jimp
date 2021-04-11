@@ -4,7 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var react = require('react');
+var React = require('react');
+var React__default = _interopDefault(React);
 var JIMP = _interopDefault(require('jimp'));
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -122,12 +123,12 @@ var Jimage = function Jimage(props) {
       width = options.width,
       height = options.height;
 
-  var _useState = react.useState(src),
+  var _useState = React.useState(src),
       _useState2 = _slicedToArray(_useState, 2),
       image = _useState2[0],
       setImage = _useState2[1];
 
-  var _useState3 = react.useState(true),
+  var _useState3 = React.useState(true),
       _useState4 = _slicedToArray(_useState3, 2),
       loading = _useState4[0],
       setLoading = _useState4[1];
@@ -137,7 +138,7 @@ var Jimage = function Jimage(props) {
     height: height || 'auto',
     alt: alt || "image"
   };
-  react.useEffect(function () {
+  React.useEffect(function () {
     function imgEffect() {
       return _imgEffect.apply(this, arguments);
     }
@@ -218,7 +219,7 @@ var Jimage = function Jimage(props) {
       return setLoading(true);
     };
   }, [src, options]);
-  if (loading) return /*#__PURE__*/React.createElement("img", {
+  if (loading) return /*#__PURE__*/React__default.createElement("img", {
     alt: _imgDefault.alt,
     src: image,
     width: _imgDefault.width,
@@ -227,7 +228,7 @@ var Jimage = function Jimage(props) {
       filter: 'blur(5px)'
     }
   });
-  return /*#__PURE__*/React.createElement("img", {
+  return /*#__PURE__*/React__default.createElement("img", {
     alt: _imgDefault.alt,
     src: image,
     width: _imgDefault.width,

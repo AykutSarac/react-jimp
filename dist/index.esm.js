@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import JIMP from 'jimp';
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
