@@ -22,7 +22,10 @@ function App() {
 				width="250"
 				height="300"
 				alt="test image"
-				options={{ greyscale: true, opacity: 0.6, quality: 80 }}
+				greyscale
+				sepia
+				pixelate="5"
+				mirror="true, false"
 			/>
 		</div>
 	)
