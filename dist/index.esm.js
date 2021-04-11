@@ -128,11 +128,6 @@ var Jimage = function Jimage(props) {
       loading = _useState4[0],
       setLoading = _useState4[1];
 
-  var _imgDefault = {
-    width: width || 'auto',
-    height: height || 'auto',
-    alt: alt || "image"
-  };
   useEffect(function () {
     function imgEffect() {
       return _imgEffect.apply(this, arguments);
@@ -219,10 +214,10 @@ var Jimage = function Jimage(props) {
   }, [src, options]);
   return /*#__PURE__*/React.createElement("img", {
     className: className && className,
-    alt: _imgDefault.alt,
+    alt: alt && alt,
     src: image,
-    width: _imgDefault.width,
-    height: _imgDefault.height,
+    width: width && width,
+    height: height && height,
     style: loading ? {
       filter: 'blur(5px)'
     } : style
