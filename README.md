@@ -1,38 +1,42 @@
 # React JIMP
+
 > JIMP&#x27;s React implementation for image manipulation
 
 [![NPM](https://img.shields.io/npm/v/react-jimp.svg)](https://www.npmjs.com/package/react-jimp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Installation
+
 ```bash
 npm install --save react-jimp
 ```
 
 Example usage (width, height and alt are optional):
+
 ```js
-import { Jimage } from 'react-jimp'
-import testImage from '../assets/testimg.png'
+import { Jimage } from "react-jimp";
+import testImage from "../assets/testimg.png";
 
 function App() {
-	return (
-		<div className="App">
-			// Create element as you import from the package
-			<Jimage 
-				src={testImage}
-				width="250"
-				height="300"
-				alt="test image"
-				greyscale
-				sepia
-				pixelate="5"
-				mirror="true, false"
-			/>
-		</div>
-	)
+  return (
+    <div className="App">
+      // Create element as you import from the package
+      <Jimage
+        src={testImage}
+        width="250"
+        height="300"
+        alt="test image"
+        greyscale
+        sepia
+        pixelate="5"
+        mirror="true, false"
+      />
+    </div>
+  );
 }
 ```
 
 ## Methods
+
 Import the component from package
 
 ```js
