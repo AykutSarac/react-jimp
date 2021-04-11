@@ -114,7 +114,8 @@ var Jimage = function Jimage(props) {
   var src = options.src,
       alt = options.alt,
       width = options.width,
-      height = options.height;
+      height = options.height,
+      style = options.style;
 
   var _useState = useState(src),
       _useState2 = _slicedToArray(_useState, 2),
@@ -138,7 +139,7 @@ var Jimage = function Jimage(props) {
 
     function _imgEffect() {
       _imgEffect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var loadImage, option, IMG_PARAMS, BOOL_PARAMS, PARAMS_ARR, INT_PARAMS, mime;
+        var loadImage, option, IMG_PARAMS, GET_PARAMS, BOOL_PARAMS, PARAMS_ARR, INT_PARAMS, mime;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -169,9 +170,12 @@ var Jimage = function Jimage(props) {
                 IMG_PARAMS = options[option];
 
                 if (typeof IMG_PARAMS === 'boolean') {
+                  // Perform if boolean true
                   if (IMG_PARAMS === true) loadImage[option]();
                 } else if (IMG_PARAMS.includes('true')) {
-                  BOOL_PARAMS = IMG_PARAMS.split(',').map(function (bool) {
+                  // Get parameters as boolean
+                  GET_PARAMS = IMG_PARAMS.split(',');
+                  BOOL_PARAMS = GET_PARAMS.map(function (bool) {
                     return bool.includes('true');
                   });
                   loadImage[option].apply(loadImage, _toConsumableArray(BOOL_PARAMS));
@@ -212,20 +216,14 @@ var Jimage = function Jimage(props) {
       return setLoading(true);
     };
   }, [src, options]);
-  if (loading) return /*#__PURE__*/React.createElement("img", {
-    alt: _imgDefault.alt,
-    src: image,
-    width: _imgDefault.width,
-    height: _imgDefault.height,
-    style: {
-      filter: 'blur(5px)'
-    }
-  });
   return /*#__PURE__*/React.createElement("img", {
     alt: _imgDefault.alt,
     src: image,
     width: _imgDefault.width,
-    height: _imgDefault.height
+    height: _imgDefault.height,
+    style: loading ? {
+      filter: 'blur(5px)'
+    } : style
   });
 };
 
