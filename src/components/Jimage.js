@@ -4,21 +4,16 @@ import JIMP from 'jimp'
 const Jimage = (props) => {
     const options = props;
 
-    const { src, alt, width, height, style } = options;
+    const { src, alt, width, height, style, className } = options;
 
     const [image, setImage] = useState(src);
     const [loading, setLoading] = useState(true);
-    const _imgDefault = {
-        width: width || 'auto',
-        height: height || 'auto',
-        alt: alt || "image"
-    };
 
     useEffect(() => {
 
         async function imgEffect() {
             const loadImage = await JIMP.read(src);
-
+            
             for (const option in options) {
 
                 if (typeof loadImage[option] !== 'function') continue;
@@ -58,9 +53,10 @@ const Jimage = (props) => {
 
 
     return (<img
-        alt={_imgDefault.alt}
-        src={image} width={_imgDefault.width}
-        height={_imgDefault.height}
+        className={className && className}
+        alt={alt && alt}
+        src={image} width={width && width}
+        height={height && height}
         style={loading ? { filter: 'blur(5px)' } : style}
     />)
 

@@ -122,7 +122,8 @@ var Jimage = function Jimage(props) {
       alt = options.alt,
       width = options.width,
       height = options.height,
-      style = options.style;
+      style = options.style,
+      className = options.className;
 
   var _useState = React.useState(src),
       _useState2 = _slicedToArray(_useState, 2),
@@ -224,6 +225,7 @@ var Jimage = function Jimage(props) {
     };
   }, [src, options]);
   return /*#__PURE__*/React__default.createElement("img", {
+    className: className && className,
     alt: _imgDefault.alt,
     src: image,
     width: _imgDefault.width,
