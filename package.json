@@ -47,5 +47,6 @@
     "rollup": "^1.32.1",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4"
-  }
+  },
+  "license": "MIT"
 }
