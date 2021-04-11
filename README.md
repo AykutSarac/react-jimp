@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# React JIMP
+> JIMP&#x27;s React implementation for image manipulation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![NPM](https://img.shields.io/npm/v/react-jimp.svg)](https://www.npmjs.com/package/react-jimp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Available Scripts
+## Installation
+```bash
+npm install --save react-jimp
+```
 
-In the project directory, you can run:
+Example usage (width, height and alt are optional):
+```js
+import { Jimage } from 'react-jimp'
+import testImage from '../assets/testimg.png'
 
-### `npm start`
+function App() {
+	return (
+		<div className="App">
+			// Create element as you import from the package
+			<Jimage 
+				src={testImage}
+				width="250"
+				height="300"
+				alt="test image"
+				options={{ greyscale: true, opacity: 0.6, quality: 80 }}
+			/>
+		</div>
+	)
+}
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Methods
+Import the component from package
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```js
+{
+	/* Resize */
+	contain: "w, h",  // scale the image to the given width and height, some parts of the image may be letter boxed
+	cover: "w, h", // scale the image to the given width and height, some parts of the image may be clipped
+	resize: "w, h", // resize the image. Jimp.AUTO can be passed as one of the values.
+	scale: "f",  // scale the image by the factor f
+	scaleToFit: "w, h",  // scale the image to the largest size that fits inside the given width and height
+	// An optional resize mode can be passed with all resize methods.
 
-### `npm test`
+	/* Crop */
+	autocrop: "tolerance, frames", // automatically crop same-color borders from image (if any), frames must be a Boolean
+	autocrop: "options",  // automatically crop same-color borders from image (if any), options may contain tolerance, cropOnlyFrames, cropSymmetric, leaveBorder
+	crop: "x, y, w, h",  // crop to the given region
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+	/* Flip and rotate */
+	flip: "horz, vert",  // flip the image horizontally or vertically
+	mirror: "horz, vert",  // an alias for flip
+	rotate: "deg",  // rotate the image clockwise by a number of degrees. Optionally, a resize mode can be passed. If `false` is passed as the second parameter, the image width and height will not be resized.
 
-### `npm run build`
+	/* Colour */
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	brightness: "val",  // adjust the brighness by a value -1 to +1
+	contrast: "val", // adjust the contrast by a value -1 to +1
+	dither565: "bool" , // ordered dithering of the image and reduce color space to 16-bits (RGB565)
+	greyscale: "bool",  // remove colour from the image
+	invert: "bool",  // invert the image colours
+	normalize: "bool",  // normalize the channels in an image
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+	/* Alpha channel */
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+	hasAlpha: "bool",  // determines if an image contains opaque pixels
+	fade: "f",  // an alternative to opacity, fades the image by a factor 0 - 1. 0 will haven no effect. 1 will turn the image
+	opacity: "f",  // multiply the alpha channel by each pixel by the factor f, 0 - 1
+	opaque: "bool",  // set the alpha channel on every pixel to fully opaque
+	background: "hex",  // set the default new pixel colour (e.g. 0xFFFFFFFF or 0x00000000) for by some operations (e.g. image.contain and
 
-### `npm run eject`
+	/* Blurs */
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+	gaussian: "r",  // Gaussian blur the image by r pixels (VERY slow)
+	blur: "r", // fast blur the image by r pixels
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	/* Effects */
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+	posterize: "n",  // apply a posterization effect with n level
+	sepia: "bool",  // apply a sepia wash to the image
+	pixelate: "size"  // apply a pixelation effect to the image
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT © [AykutSarac](https://github.com/AykutSarac)# React Jimp
+JavaScript Image Manipulation Program (JIMP) 's component based React implementation. JIMP is an image processing library for Node written entirely in JavaScript, with zero native dependencies.
