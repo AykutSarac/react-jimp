@@ -135,8 +135,7 @@ var Jimage = function Jimage(props) {
 
     function _imgEffect() {
       _imgEffect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var loadImage, option, IMG_PARAMS, GET_PARAMS, BOOL_PARAMS, _textObj, PARAMS_ARR, FLOAT_PARAMS, mime;
-
+        var loadImage, option, IMG_PARAMS, GET_PARAMS, BOOL_PARAMS, PARAMS_ARR, FLOAT_PARAMS, mime;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -176,15 +175,9 @@ var Jimage = function Jimage(props) {
                     return bool.includes('true');
                   });
                   loadImage[option].apply(loadImage, _toConsumableArray(BOOL_PARAMS));
-                } else if (option === 'text') {
-                  _textObj = {
-                    font: Jimp[props.text.font],
-                    x: props.text.x,
-                    y: props.text.y,
-                    text: props.text.text
-                  };
-                  console.log(_textObj);
-                  loadImage.print(_textObj.font, _textObj.x, _textObj.y, _textObj.text);
+                } else if (option === 'color') {
+                  // Color manipulation
+                  loadImage.color(options[option]);
                 } else {
                   // Take parameters and convert to int
                   PARAMS_ARR = IMG_PARAMS.split(',');
