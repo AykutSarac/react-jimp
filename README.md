@@ -89,6 +89,20 @@ Import the component from package
 }
 ```
 
+## Writing Text
+
+```js
+<Jimage
+	src="./img.jpg"
+	text={{
+		font: 'FONT_SANS_8_WHITE',
+		x: '10',
+		y: '5',
+		text: 'Hello world!'
+	}}
+>
+```
+
 ## License
 
 MIT © [AykutSarac](https://github.com/AykutSarac)# React Jimp
