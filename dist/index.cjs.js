@@ -142,7 +142,7 @@ var Jimage = function Jimage(props) {
 
     function _imgEffect() {
       _imgEffect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var loadImage, option, IMG_PARAMS, GET_PARAMS, BOOL_PARAMS, _textObj, res, PARAMS_ARR, FLOAT_PARAMS, mime;
+        var loadImage, option, IMG_PARAMS, GET_PARAMS, BOOL_PARAMS, _textObj, PARAMS_ARR, FLOAT_PARAMS, mime;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
@@ -157,21 +157,20 @@ var Jimage = function Jimage(props) {
 
               case 4:
                 if ((_context.t1 = _context.t0()).done) {
-                  _context.next = 13;
+                  _context.next = 12;
                   break;
                 }
 
                 option = _context.t1.value;
-                console.log(option);
 
                 if (!(typeof loadImage[option] !== 'function')) {
-                  _context.next = 9;
+                  _context.next = 8;
                   break;
                 }
 
                 return _context.abrupt("continue", 4);
 
-              case 9:
+              case 8:
                 IMG_PARAMS = options[option];
 
                 if (typeof IMG_PARAMS === 'boolean') {
@@ -191,8 +190,8 @@ var Jimage = function Jimage(props) {
                     y: props.text.y,
                     text: props.text.text
                   };
-                  res = loadImage.print.apply(loadImage, _toConsumableArray(_textObj));
-                  console.log(res);
+                  console.log(_textObj);
+                  loadImage.print(_textObj.font, _textObj.x, _textObj.y, _textObj.text);
                 } else {
                   // Take parameters and convert to int
                   PARAMS_ARR = IMG_PARAMS.split(',');
@@ -206,16 +205,16 @@ var Jimage = function Jimage(props) {
                 _context.next = 4;
                 break;
 
-              case 13:
-                _context.next = 15;
+              case 12:
+                _context.next = 14;
                 return loadImage.getBase64Async(JIMP.MIME_JPEG);
 
-              case 15:
+              case 14:
                 mime = _context.sent;
                 setLoading(false);
                 setImage(mime);
 
-              case 18:
+              case 17:
               case "end":
                 return _context.stop();
             }
