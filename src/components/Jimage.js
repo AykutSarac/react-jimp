@@ -15,6 +15,7 @@ const Jimage = (props) => {
             const loadImage = await JIMP.read(src);
             
             for (const option in options) {
+                console.log(option);
 
                 if (typeof loadImage[option] !== 'function') continue;
                 const IMG_PARAMS = options[option];
@@ -33,6 +34,7 @@ const Jimage = (props) => {
 
                 } else if (option === 'text') {
 
+
                     const _textObj = {
                         font: Jimp[props.text.font],
                         x: props.text.x,
@@ -40,7 +42,8 @@ const Jimage = (props) => {
                         text: props.text.text
                     }
 
-                    loadImage.print(..._textObj);
+                    var res = loadImage.print(..._textObj);
+                    console.log(res);
 
                 } else {
 
