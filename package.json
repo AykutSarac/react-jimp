@@ -18,6 +18,13 @@
   "bugs": {
     "url": "https://github.com/AykutSarac/react-jimp/issues"
   },
+  "keywords": [
+    "jimp",
+    "react",
+    "react-jimp",
+    "image",
+    "react img"
+  ],
   "scripts": {
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
