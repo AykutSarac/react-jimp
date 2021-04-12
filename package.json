@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "deploy": "num run build && npm publish"
+    "deploy": "npm run build && npm publish"
   },
   "eslintConfig": {
     "extends": [
