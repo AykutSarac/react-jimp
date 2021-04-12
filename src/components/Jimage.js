@@ -31,26 +31,17 @@ const Jimage = (props) => {
                     const BOOL_PARAMS = GET_PARAMS.map(bool => (bool.includes('true')))
                     loadImage[option](...BOOL_PARAMS)
 
-                } else if (option === 'text') {
+                } else if (option === 'color') {
 
-
-                    const _textObj = {
-                        font: Jimp[props.text.font],
-                        x: props.text.x,
-                        y: props.text.y,
-                        text: props.text.text
-                    }
-
-                    console.log(_textObj);
-
-                    loadImage.print(_textObj.font, _textObj.x, _textObj.y, _textObj.text);
+                    // Color manipulation
+                    loadImage.color(options[option])
 
                 } else {
 
                     // Take parameters and convert to int
                     const PARAMS_ARR = IMG_PARAMS.split(',');
                     const FLOAT_PARAMS = PARAMS_ARR.map(opt => parseFloat(opt));
-
+                    
                     // Perform method
                     loadImage[option](...FLOAT_PARAMS);
                 }
