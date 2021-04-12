@@ -135,7 +135,7 @@ var Jimage = function Jimage(props) {
 
     function _imgEffect() {
       _imgEffect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var loadImage, option, IMG_PARAMS, GET_PARAMS, BOOL_PARAMS, PARAMS_ARR, INT_PARAMS, mime;
+        var loadImage, option, IMG_PARAMS, GET_PARAMS, BOOL_PARAMS, PARAMS_ARR, FLOAT_PARAMS, mime;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -178,11 +178,11 @@ var Jimage = function Jimage(props) {
                 } else {
                   // Take parameters and convert to int
                   PARAMS_ARR = IMG_PARAMS.split(',');
-                  INT_PARAMS = PARAMS_ARR.map(function (opt) {
-                    return parseInt(opt);
+                  FLOAT_PARAMS = PARAMS_ARR.map(function (opt) {
+                    return parseFloat(opt);
                   }); // Perform method
 
-                  loadImage[option].apply(loadImage, _toConsumableArray(INT_PARAMS));
+                  loadImage[option].apply(loadImage, _toConsumableArray(FLOAT_PARAMS));
                 }
 
                 _context.next = 4;
@@ -219,7 +219,7 @@ var Jimage = function Jimage(props) {
     width: width && width,
     height: height && height,
     style: loading ? {
-      filter: 'blur(5px)'
+      filter: 'blur(3px)'
     } : style
   });
 };

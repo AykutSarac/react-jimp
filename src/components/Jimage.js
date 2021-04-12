@@ -35,10 +35,10 @@ const Jimage = (props) => {
 
                     // Take parameters and convert to int
                     const PARAMS_ARR = IMG_PARAMS.split(',');
-                    const INT_PARAMS = PARAMS_ARR.map(opt => parseInt(opt));
-
+                    const FLOAT_PARAMS = PARAMS_ARR.map(opt => parseFloat(opt));
+                    
                     // Perform method
-                    loadImage[option](...INT_PARAMS);
+                    loadImage[option](...FLOAT_PARAMS);
                 }
             }
 
@@ -57,7 +57,7 @@ const Jimage = (props) => {
         alt={alt && alt}
         src={image} width={width && width}
         height={height && height}
-        style={loading ? { filter: 'blur(5px)' } : style}
+        style={loading ? { filter: 'blur(3px)' } : style}
     />)
 
 }

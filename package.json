@@ -1,16 +1,12 @@
 {
   "name": "react-jimp",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "JIMP library integrated to React for image manipulation",
   "main": "dist/index.cjs.js",
   "author": "AykutSarac",
   "homepage": "https://github.com/AykutSarac/react-jimp#readme",
   "module": "dist/index.esm.js",
   "source": "src/index.js",
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/AykutSarac/react-jimp"
@@ -27,10 +23,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "build-watch": "rollup -c -w",
-    "start-playground": "cd playground && npm run start",
-    "i-all": "npm i && cd playground && npm i",
-    "dev": "npm-run-all --parallel build-watch start-playground"
+    "deploy": "num run build && npm publish"
   },
   "eslintConfig": {
     "extends": [
@@ -38,17 +31,8 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "peerDependencies": {
+    "react": ">=16.8.0"
   },
   "dependencies": {
     "jimp": "^0.16.1"
@@ -59,9 +43,6 @@
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
     "@rollup/plugin-babel": "^5.3.0",
-    "npm-run-all": "^4.1.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "rollup": "^1.32.1",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4"
