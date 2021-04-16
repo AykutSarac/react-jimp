@@ -62,7 +62,7 @@ const Jimage = (props) => {
         alt={alt && alt}
         src={image} width={width && width}
         height={height && height}
-        style={loading ? { filter: 'blur(3px)' } : style}
+        style={loading && props.loadBlur ? { filter: 'blur(3px)' } : style}
     />)
 
 }
