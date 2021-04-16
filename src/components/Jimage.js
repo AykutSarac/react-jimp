@@ -4,7 +4,7 @@ import JIMP from 'jimp'
 const Jimage = (props) => {
     const options = props;
 
-    const { src, alt, width, height, style, className } = options;
+    const { src, alt, width, height, style, className, loadBlur } = options;
 
     const [image, setImage] = useState(src);
     const [loading, setLoading] = useState(true);
@@ -62,7 +62,7 @@ const Jimage = (props) => {
         alt={alt && alt}
         src={image} width={width && width}
         height={height && height}
-        style={loading && props.loadBlur ? { filter: 'blur(3px)' } : style}
+        style={loading && loadBlur ? { filter: 'blur(3px)' } : style}
     />)
 
 }
