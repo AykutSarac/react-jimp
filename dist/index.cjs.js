@@ -123,7 +123,8 @@ var Jimage = function Jimage(props) {
       width = options.width,
       height = options.height,
       style = options.style,
-      className = options.className;
+      className = options.className,
+      loadBlur = options.loadBlur;
 
   var _useState = React.useState(src),
       _useState2 = _slicedToArray(_useState, 2),
@@ -228,7 +229,7 @@ var Jimage = function Jimage(props) {
     src: image,
     width: width && width,
     height: height && height,
-    style: loading ? {
+    style: loading && loadBlur ? {
       filter: 'blur(3px)'
     } : style
   });
