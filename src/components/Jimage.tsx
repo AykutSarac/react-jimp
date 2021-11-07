@@ -13,7 +13,6 @@ interface Options {
   apply: typeof JimpTypes[];
 }
 
-
 const Jimage: React.FC<Options> = (props) => {
   const jimp_actions = props.apply as unknown as string[];
   const { src, style, width, height, alt, className, loadBlur } = props;

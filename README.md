@@ -15,8 +15,8 @@ Example usage (width, height and alt are optional):
 - Add loadBlur to display blurred image on load
 
 ```js
-import { Jimage } from "react-jimp";
-import testImage from "../assets/testimg.png";
+import { Jimage } from 'react-jimp';
+import testImage from '../assets/testimg.png';
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         pixelate="5"
         mirror="true, false"
         greyscale
-        color={[{ apply: "hue", params: [-90] }]}
+        color={[{ apply: 'hue', params: [-90] }]}
         loadBlur
       />
     </div>

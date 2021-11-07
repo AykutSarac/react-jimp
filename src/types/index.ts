@@ -5,14 +5,14 @@
  * test suite, the version has been bumped to 3.1
  */
 
- import {
+import {
   Jimp as JimpType,
   UnionToIntersection,
   GetPluginVal,
   GetPluginConst,
   GetPluginEncoders,
   GetPluginDecoders,
-  JimpConstructors
+  JimpConstructors,
 } from '@jimp/core';
 import typeFn from '@jimp/types';
 import pluginFn from '@jimp/plugins';
@@ -20,28 +20,21 @@ import pluginFn from '@jimp/plugins';
 type Types = ReturnType<typeof typeFn>;
 type Plugins = ReturnType<typeof pluginFn>;
 
-type IntersectedPluginTypes = UnionToIntersection<
-  GetPluginVal<Types> | GetPluginVal<Plugins>
->;
+type IntersectedPluginTypes = UnionToIntersection<GetPluginVal<Types> | GetPluginVal<Plugins>>;
 
-type IntersectedPluginConsts = UnionToIntersection<
-  GetPluginConst<Types> | GetPluginConst<Plugins>
->;
+type IntersectedPluginConsts = UnionToIntersection<GetPluginConst<Types> | GetPluginConst<Plugins>>;
 
-type IntersectedPluginEncoders = UnionToIntersection<
-  GetPluginEncoders<Types> | GetPluginEncoders<Plugins>
->;
+type IntersectedPluginEncoders = UnionToIntersection<GetPluginEncoders<Types> | GetPluginEncoders<Plugins>>;
 
-type IntersectedPluginDecoders = UnionToIntersection<
-  GetPluginDecoders<Types> | GetPluginDecoders<Plugins>
->;
+type IntersectedPluginDecoders = UnionToIntersection<GetPluginDecoders<Types> | GetPluginDecoders<Plugins>>;
 
 type Jimp = JimpType & IntersectedPluginTypes;
 
-declare const Jimp: JimpConstructors & IntersectedPluginConsts & {
-  prototype: Jimp;
-  encoders: IntersectedPluginEncoders;
-  decoders: IntersectedPluginDecoders;
-};
+declare const Jimp: JimpConstructors &
+  IntersectedPluginConsts & {
+    prototype: Jimp;
+    encoders: IntersectedPluginEncoders;
+    decoders: IntersectedPluginDecoders;
+  };
 
 export default Jimp.prototype;
