@@ -1,1 +1,3 @@
-export { default as Jimage } from './components/Jimage';
+import { Jimage } from './components/Jimage';
+
+export { Jimage };

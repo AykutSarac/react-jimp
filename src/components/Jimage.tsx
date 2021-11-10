@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Jimp from 'jimp';
+import React from 'react';
+import { read, MIME_JPEG } from 'jimp';
 import JimpTypes from '../types';
+
+type JimpActions = typeof JimpTypes;
 
 interface Options {
   src: string;
@@ -10,26 +12,31 @@ interface Options {
   style?: React.CSSProperties;
   className?: string;
   loadBlur?: boolean;
-  apply: typeof JimpTypes[];
+  apply: JimpActions[];
 }
 
-const Jimage: React.FC<Options> = (props) => {
-  const jimp_actions = props.apply as unknown as string[];
-  const { src, style, width, height, alt, className, loadBlur } = props;
+export const Jimage: React.FC<Options> = ({
+  src,
+  style,
+  width,
+  height,
+  alt,
+  className,
+  loadBlur,
+  apply,
+}) => {
+  const jimp_actions = apply as unknown as string[];
+  
+  const [image, setImage] = React.useState(src);
+  const [loading, setLoading] = React.useState(true);
 
-  const [image, setImage] = useState<any>(src);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+  React.useEffect(() => {
     async function imgEffect() {
-      const jimpImage = await Jimp.read(src);
+      const jimpImage = await read(src);
 
-      for (let i = 0; i < jimp_actions.length; i++) {
-        const Effect = jimp_actions[i];
-        jimpImage[Effect]();
-      }
+      jimpImage[jimp_actions[0]]();
 
-      const mime = await jimpImage.getBase64Async(Jimp.MIME_JPEG);
+      const mime = await jimpImage.getBase64Async(MIME_JPEG);
       setLoading(false);
       setImage(mime);
     }
@@ -49,5 +56,3 @@ const Jimage: React.FC<Options> = (props) => {
     />
   );
 };
-
-export default Jimage;
