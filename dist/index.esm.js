@@ -56,8 +56,7 @@ function __generator(thisArg, body) {
 }
 
 var Jimage = function (_a) {
-    var src = _a.src, style = _a.style, width = _a.width, height = _a.height, alt = _a.alt, className = _a.className, loadBlur = _a.loadBlur, apply = _a.apply;
-    var jimp_actions = apply;
+    var src = _a.src, style = _a.style, width = _a.width, height = _a.height, alt = _a.alt, className = _a.className, loadBlur = _a.loadBlur, apply = _a.jimp;
     var _b = React.useState(src), image = _b[0], setImage = _b[1];
     var _c = React.useState(true), loading = _c[0], setLoading = _c[1];
     React.useEffect(function () {
@@ -69,7 +68,7 @@ var Jimage = function (_a) {
                         case 0: return [4 /*yield*/, read(src)];
                         case 1:
                             jimpImage = _a.sent();
-                            jimpImage[jimp_actions[0]]();
+                            jimpImage[apply]();
                             return [4 /*yield*/, jimpImage.getBase64Async(MIME_JPEG)];
                         case 2:
                             mime = _a.sent();
@@ -82,7 +81,7 @@ var Jimage = function (_a) {
         }
         imgEffect();
         return function () { return setLoading(true); };
-    }, [src, jimp_actions]);
+    }, [src, apply]);
     return (jsx("img", { className: className && className, alt: alt && alt, src: image, width: width && width, height: height && height, style: loading && loadBlur ? { filter: 'blur(3px)' } : style }, void 0));
 };
 

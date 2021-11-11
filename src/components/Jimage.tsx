@@ -2,7 +2,9 @@ import React from 'react';
 import { read, MIME_JPEG } from 'jimp';
 import JimpTypes from '../types';
 
-type JimpActions = typeof JimpTypes;
+interface Jimp {
+  [key: string]: typeof JimpTypes;
+}
 
 interface Options {
   src: string;
@@ -12,21 +14,10 @@ interface Options {
   style?: React.CSSProperties;
   className?: string;
   loadBlur?: boolean;
-  apply: JimpActions[];
+  jimp: Jimp
 }
 
-export const Jimage: React.FC<Options> = ({
-  src,
-  style,
-  width,
-  height,
-  alt,
-  className,
-  loadBlur,
-  apply,
-}) => {
-  const jimp_actions = apply as unknown as string[];
-  
+export const Jimage: React.FC<Options> = ({ src, style, width, height, alt, className, loadBlur, jimp: apply }) => {
   const [image, setImage] = React.useState(src);
   const [loading, setLoading] = React.useState(true);
 
@@ -34,7 +25,7 @@ export const Jimage: React.FC<Options> = ({
     async function imgEffect() {
       const jimpImage = await read(src);
 
-      jimpImage[jimp_actions[0]]();
+      jimpImage[apply as unknown as string]();
 
       const mime = await jimpImage.getBase64Async(MIME_JPEG);
       setLoading(false);
@@ -43,7 +34,7 @@ export const Jimage: React.FC<Options> = ({
 
     imgEffect();
     return () => setLoading(true);
-  }, [src, jimp_actions]);
+  }, [src, apply as unknown as string]);
 
   return (
     <img
