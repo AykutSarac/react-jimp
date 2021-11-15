@@ -14,7 +14,7 @@ interface Options {
   style?: React.CSSProperties;
   className?: string;
   loadBlur?: boolean;
-  jimp: Jimp
+  jimp: Jimp;
 }
 
 export const Jimage: React.FC<Options> = ({ src, style, width, height, alt, className, loadBlur, jimp: apply }) => {
